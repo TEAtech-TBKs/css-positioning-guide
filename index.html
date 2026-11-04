@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning - Complete Lesson Note</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f5f9;
+            color: #263247;
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 14px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #14213d, #2563eb);
+            color: white;
+            padding: 45px 35px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #bfdbfe;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            line-height: 1.3;
+            margin: 12px 0;
+        }
+
+        .hero p {
+            color: #e0eaff;
+        }
+
+        h2 {
+            color: #173b78;
+            font-size: 25px;
+            margin: 40px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dbeafe;
+        }
+
+        h3 {
+            color: #2563eb;
+            font-size: 19px;
+            margin: 25px 0 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin: 12px 0 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #172f57;
+        }
+
+        code {
+            background: #eaf1ff;
+            color: #174ea6;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 22px;
+            border-radius: 9px;
+            overflow-x: auto;
+            margin: 15px 0 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .note {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 9px;
+            margin: 20px 0;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #dce3ed;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #eaf1ff;
+            color: #173b78;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .diagram {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .diagram-box {
+            background: #dbeafe;
+            border: 2px solid #2563eb;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 250px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #173b78;
+        }
+
+        .diagram-box.special {
+            background: #2563eb;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 45px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                width: 94%;
+                padding: 22px;
+                margin: 15px auto;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                box-shadow: none;
+                padding: 15px;
+            }
+
+            pre {
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+            }
+
+            h2, h3 {
+                break-after: avoid;
+            }
+
+            pre, .example, .note, .warning, .success {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="hero">
+        <small>Web Design and Development</small>
+        <h1>CSS Positioning</h1>
+        <p>A complete beginner-friendly guide to understanding how to position HTML elements on a webpage using CSS.</p>
+    </header>
+
+    <!-- INTRODUCTION -->
+
+    <h2>1. Introduction to CSS Positioning</h2>
+
+    <p>
+        CSS positioning determines where an HTML element sits on a page and 
+        how it interacts or aligns with surrounding elements
+         It tells the browser exactly where to place a specific 
+         piece of your site—like a button, text, or a picture, 
+         and how it should behave around everything else next to it.
+    </p>
+
+    <p>
+        Normally, HTML elements appear on a webpage according to the natural
+        document flow. This means elements are arranged based on their type
+        and the order in which they appear in the HTML document.
+    </p>
+
+    <p>
+        However, there are situations where we need more control over the
+        location of elements. For example:
+    </p>
+
+    <ul>
+        <li>Placing a notification badge on the corner of an icon.</li>
+        <li>Keeping a navigation bar at the top of the screen while scrolling.</li>
+        <li>Placing text over an image.</li>
+        <li>Creating a floating button at the bottom of a webpage.</li>
+        <li>Positioning one element inside another element.</li>
+    </ul>
+
+    <p>
+        This is where CSS positioning becomes useful.
+    </p>
+
+    <div class="note">
+        <strong>Key Definition:</strong>
+        CSS Positioning is the technique of controlling the placement of
+        HTML elements on a webpage using the CSS <code>position</code>
+        property and positioning properties such as <code>top</code>,
+        <code>right</code>, <code>bottom</code>, and <code>left</code>.
+    </div>
+
+
+    <!-- POSITION PROPERTY -->
+
+    <h2>2. Understanding the Position Property</h2>
+
+    <p>
+        The <code>position</code> property is used to specify the positioning
+        method an element should use.
+    </p>
+
+    <p>The syntax is:</p>
+
+    <pre><code>selector {
+    position: value;
+}</code></pre>
+
+    <p>
+        The value determines how the element behaves and how its location
+        can be controlled.
+    </p>
+
+    <p>CSS provides five main position values:</p>
+
+    <ol>
+        <li><code>static</code></li>
+        <li><code>relative</code></li>
+        <li><code>absolute</code></li>
+        <li><code>fixed</code></li>
+        <li><code>sticky</code></li>
+    </ol>
+
+
+    <!-- POSITIONING PROPERTIES -->
+
+    <h2>3. Understanding Top, Right, Bottom and Left</h2>
+
+    <p>
+        Before learning the different position values, it is important to
+        understand four CSS properties commonly used with positioning.
+    </p>
+
+    <table>
+        <tr>
+            <th>Property</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td><code>top</code></td>
+            <td>Controls the distance from the top reference edge.</td>
+        </tr>
+        <tr>
+            <td><code>right</code></td>
+            <td>Controls the distance from the right reference edge.</td>
+        </tr>
+        <tr>
+            <td><code>bottom</code></td>
+            <td>Controls the distance from the bottom reference edge.</td>
+        </tr>
+        <tr>
+            <td><code>left</code></td>
+            <td>Controls the distance from the left reference edge.</td>
+        </tr>
+    </table>
+
+    <p>
+        These properties are used to move positioned elements away from
+        their reference edges.
+    </p>
+
+    <h3>Example:</h3>
+
+    <pre><code>.box {
+    position: relative;
+    top: 20px;
+    left: 30px;
+}</code></pre>
+
+    <p>Breaking down the code:</p>
+
+    <ul>
+        <li><code>position: relative;</code> allows the element to be positioned relative to its normal location.</li>
+        <li><code>top: 20px;</code> moves the element 20 pixels down from its original position.</li>
+        <li><code>left: 30px;</code> moves the element 30 pixels to the right from its original position.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Important:</strong> The top, right, bottom, and left properties
+        do not normally move a statically positioned element. They work with
+        positioned elements such as relative, absolute, fixed, and sticky.
+    </div>
+
+
+    <!-- STATIC -->
+
+    <h2>4. Static Positioning</h2>
+
+    <p>
+        <code>static</code> is the default positioning value of every HTML
+        element.
+    </p>
+
+    <p>
+        When an element has static positioning, it stays in the normal
+        document flow. It appears according to the normal arrangement of
+        HTML elements.
+    </p>
+
+    <p>
+        This means that the element is not moved using top, right, bottom,
+        or left positioning offsets.
+    </p>
+
+    <h3>Example:</h3>
+
+    <pre><code>&lt;div class="box"&gt;Box One&lt;/div&gt;
+&lt;div class="box"&gt;Box Two&lt;/div&gt;
+&lt;div class="box"&gt;Box Three&lt;/div&gt;</code></pre>
+
+    <pre><code>.box {
+    background-color: lightblue;
+    padding: 20px;
+    margin: 10px;
+    position: static;
+}</code></pre>
+
+    <h3>What happens?</h3>
+
+    <p>
+        The three boxes appear one after another in the normal document
+        flow. The second box appears after the first, and the third appears
+        after the second.
+    </p>
+
+    <div class="diagram">
+        <div class="diagram-box">Box One</div>
+        <div class="diagram-box">Box Two</div>
+        <div class="diagram-box">Box Three</div>
+        <p><strong>Normal document flow</strong></p>
+    </div>
+
+    <div class="success">
+        <strong>Remember:</strong> Static positioning is the default.
+        You do not need to write <code>position: static;</code> unless
+        you specifically want to reset another positioning value.
+    </div>
+
+
+    <!-- RELATIVE -->
+
+    <h2>5. Relative Positioning</h2>
+
+    <p>
+        Relative positioning allows an element to move away from its
+        original position without losing its original space in the document.
+    </p>
+
+    <p>
+        In simple terms, the element can be moved from where it would
+        normally appear, but the space it originally occupied is still
+        reserved.
+    </p>
+
+    <h3>Example:</h3>
+
+    <pre><code>&lt;div class="box box-one"&gt;Box One&lt;/div&gt;
+&lt;div class="box box-two"&gt;Box Two&lt;/div&gt;
+&lt;div class="box box-three"&gt;Box Three&lt;/div&gt;</code></pre>
+
+    <pre><code>.box {
+    width: 150px;
+    padding: 20px;
+    background-color: lightblue;
+    margin: 10px;
+}
+
+.box-two {
+    position: relative;
+    top: 20px;
+    left: 30px;
+    background-color: orange;
+}</code></pre>
+
+    <h3>Breaking down the example:</h3>
+
+    <ul>
+        <li>All three boxes are displayed normally.</li>
+        <li>Box Two is given <code>position: relative;</code>.</li>
+        <li><code>top: 20px;</code> moves Box Two downward by 20 pixels.</li>
+        <li><code>left: 30px;</code> moves Box Two to the right by 30 pixels.</li>
+        <li>Its original space remains reserved even after it moves.</li>
+    </ul>
+
+    <div class="diagram">
+        <div class="diagram-box">Box One</div>
+        <div class="diagram-box special">Box Two (Moved)</div>
+        <div class="diagram-box">Box Three</div>
+        <p><strong>Illustration of relative positioning</strong></p>
+        <p>Box Two moves, but its original space is still preserved.</p>
+    </div>
+
+    <div class="note">
+        <strong>Important Use:</strong> Relative positioning is frequently
+        used as a reference point for absolutely positioned child elements.
+        We will understand this better in the next section.
+    </div>
+
+
+    <!-- ABSOLUTE -->
+
+    <h2>6. Absolute Positioning</h2>
+
+    <p>
+        Absolute positioning allows an element to be placed at a specific
+        location within its nearest positioned ancestor.
+    </p>
+
+    <p>
+        A positioned ancestor is an element whose position value is not
+        <code>static</code>, such as relative, absolute, fixed, or sticky.
+    </p>
+
+    <p>
+        If the element does not have a positioned ancestor, it is generally
+        positioned relative to the initial containing block, which is
+        usually based on the viewport.
+    </p>
+
+    <p>
+        Unlike relative positioning, an absolutely positioned element is
+        removed from the normal document flow. This means the space it
+        originally occupied is no longer reserved.
+    </p>
+
+    <h3>Practical Example: Placing Text Over an Image</h3>
+
+    <p>
+        Imagine creating a website with a banner image and text displayed
+        at the bottom-right corner of that image.
+    </p>
+
+    <pre><code>&lt;div class="image-container"&gt;
+    &lt;img src="banner.jpg" alt="Website banner"&gt;
+
+    &lt;div class="image-text"&gt;
+        Welcome to Our Website
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <pre><code>.image-container {
+    position: relative;
+    width: 400px;
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+}
+
+.image-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 12px;
+}</code></pre>
+
+    <h3>Understanding the code:</h3>
+
+    <ol>
+        <li>
+            <strong>Parent container:</strong>
+            The image container has <code>position: relative;</code>.
+            This makes it the positioning reference for the text.
+        </li>
+        <li>
+            <strong>Image:</strong>
+            The image fills the width of its parent container.
+        </li>
+        <li>
+            <strong>Child element:</strong>
+            The image text has <code>position: absolute;</code>.
+        </li>
+        <li>
+            <strong>Bottom:</strong>
+            <code>bottom: 20px;</code> places the text 20 pixels from the
+            bottom edge of its positioned container.
+        </li>
+        <li>
+            <strong>Right:</strong>
+            <code>right: 20px;</code> places the text 20 pixels from the
+            right edge of its positioned container.
+        </li>
+    </ol>
+
+    <div class="warning">
+        <strong>Important Concept:</strong>
+        When using absolute positioning inside a container, it is common
+        to give the parent <code>position: relative;</code> and the child
+        <code>position: absolute;</code>. This ensures the child is
+        positioned in relation to that parent rather than the page.
+    </div>
+
+    <h3>Another Practical Example: Notification Badge</h3>
+
+    <p>
+        You may have seen a small number displayed on the corner of a
+        notification or shopping cart icon. Absolute positioning can
+        be used to create this effect.
+    </p>
+
+    <pre><code>&lt;div class="notification"&gt;
+    &lt;span&gt;🔔&lt;/span&gt;
+    &lt;span class="badge"&gt;3&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+    <pre><code>.notification {
+    position: relative;
+    display: inline-block;
+    font-size: 35px;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 4px 7px;
+    border-radius: 50%;
+}</code></pre>
+
+    <p>
+        The notification container acts as the reference point. The
+        badge is then positioned near the top-right corner of the icon.
+    </p>
+
+
+    <!-- FIXED -->
+
+    <h2>7. Fixed Positioning</h2>
+
+    <p>
+        Fixed positioning allows an element to stay in a particular
+        position on the screen, even when the user scrolls through the
+        webpage.
+    </p>
+
+    <p>
+        A fixed element is normally positioned relative to the viewport,
+        which is the visible area of the browser window.
+    </p>
+
+    <p>
+        Unlike normal document elements, a fixed element does not move
+        along with the page when the user scrolls.
+    </p>
+
+    <h3>Practical Example: Fixed Navigation Bar</h3>
+
+    <pre><code>&lt;header class="navbar"&gt;
+    My Website
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;p&gt;Add enough content here to make the page scroll.&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+    <pre><code>.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #173b78;
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+}
+
+main {
+    padding-top: 80px;
+}</code></pre>
+
+    <h3>Breaking down the code:</h3>
+
+    <ul>
+        <li><code>position: fixed;</code> fixes the navigation bar to the viewport.</li>
+        <li><code>top: 0;</code> places it at the top of the screen.</li>
+        <li><code>left: 0;</code> aligns it with the left edge.</li>
+        <li><code>width: 100%;</code> makes it cover the full width of the screen.</li>
+        <li><code>z-index: 1000;</code> helps it appear above other elements with lower stacking levels.</li>
+        <li><code>padding-top: 80px;</code> gives the main content room so it does not begin underneath the fixed navigation bar.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Real-life examples of fixed positioning:</strong>
+        <ul>
+            <li>Floating WhatsApp buttons.</li>
+            <li>Back-to-top buttons.</li>
+            <li>Fixed navigation bars.</li>
+            <li>Chat support buttons.</li>
+        </ul>
+    </div>
+
+
+    <!-- STICKY -->
+
+    <h2>8. Sticky Positioning</h2>
+
+    <p>
+        Sticky positioning is a combination of relative and fixed
+        positioning.
+    </p>
+
+    <p>
+        An element with <code>position: sticky;</code> behaves like a
+        normal element at first. However, when the user scrolls and the
+        element reaches a specified position, it sticks there.
+    </p>
+
+    <p>
+        Unlike fixed positioning, a sticky element still occupies its
+        original space in the document.
+    </p>
+
+    <h3>Practical Example: Sticky Navigation Bar</h3>
+
+    <pre><code>&lt;header class="header"&gt;
+    My Website
+&lt;/header&gt;
+
+&lt;nav class="navigation"&gt;
+    Home | About | Services | Contact
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;Add enough content to test scrolling.&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+    <pre><code>.header {
+    background-color: #173b78;
+    color: white;
+    padding: 25px;
+}
+
+.navigation {
+    position: sticky;
+    top: 0;
+    background-color: #2563eb;
+    color: white;
+    padding: 15px;
+    z-index: 100;
+}</code></pre>
+
+    <h3>Breaking down the code:</h3>
+
+    <ul>
+        <li><code>position: sticky;</code> enables sticky positioning.</li>
+        <li><code>top: 0;</code> tells the navigation bar to stick when it reaches the top of the viewport.</li>
+        <li><code>z-index: 100;</code> helps the navigation bar stay above other elements when they overlap.</li>
+    </ul>
+
+    <div class="warning">
+        <strong>Important:</strong> Sticky positioning requires at least
+        one inset value, such as <code>top: 0;</code>, to define where
+        the element should stick. It can also be affected by the
+        scrolling behavior and overflow settings of its ancestors.
+    </div>
+
+
+    <!-- COMPARISON -->
+
+    <h2>9. Difference Between the Five Position Values</h2>
+
+    <table>
+        <tr>
+            <th>Position</th>
+            <th>How It Works</th>
+            <th>Does It Keep Its Original Space?</th>
+        </tr>
+
+        <tr>
+            <td>Static</td>
+            <td>Follows normal document flow.</td>
+            <td>Yes</td>
+        </tr>
+
+        <tr>
+            <td>Relative</td>
+            <td>Moves relative to its original position.</td>
+            <td>Yes</td>
+        </tr>
+
+        <tr>
+            <td>Absolute</td>
+            <td>Positions itself relative to its nearest positioned ancestor.</td>
+            <td>No</td>
+        </tr>
+
+        <tr>
+            <td>Fixed</td>
+            <td>Normally stays in the same place relative to the viewport.</td>
+            <td>No</td>
+        </tr>
+
+        <tr>
+            <td>Sticky</td>
+            <td>Behaves normally until it reaches its sticking position.</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+
+    <!-- Z INDEX -->
+
+    <h2>10. Understanding Z-Index</h2>
+
+    <p>
+        Sometimes, two or more elements overlap each other. When this
+        happens, one element may appear in front of another.
+    </p>
+
+    <p>
+        The CSS <code>z-index</code> property controls the stacking order
+        of positioned elements and certain other elements that establish
+        stacking contexts.
+    </p>
+
+    <p>
+        Think of it as layers stacked on top of one another. An element
+        with a higher stacking level may appear in front of an element
+        with a lower stacking level, provided they belong to comparable
+        stacking contexts.
+    </p>
+
+    <h3>Example:</h3>
+
+    <pre><code>.box-one {
+    position: absolute;
+    z-index: 1;
+}
+
+.box-two {
+    position: absolute;
+    z-index: 2;
+}</code></pre>
+
+    <p>
+        In this example, Box Two will generally appear above Box One
+        because it has a higher z-index value.
+    </p>
+
+    <div class="note">
+        <strong>Remember:</strong> A higher z-index does not always mean
+        an element will appear above every other element on the page.
+        Stacking contexts can affect how z-index values interact.
+    </div>
+
+
+    <!-- PRACTICAL PROJECT -->
+
+    <h2>11. Complete Practical Project: Creating a Profile Card</h2>
+
+    <p>
+        Now that we understand the different positioning methods, let's
+        combine them to create a simple profile card.
+    </p>
+
+    <p>The card will contain:</p>
+
+    <ul>
+        <li>A profile image.</li>
+        <li>A small online status badge positioned on the image.</li>
+        <li>A name and description.</li>
+        <li>A button.</li>
+    </ul>
+
+    <h3>HTML Code</h3>
+
+    <pre><code>&lt;div class="profile-card"&gt;
+
+    &lt;div class="image-wrapper"&gt;
+        &lt;img src="profile.jpg" alt="Profile picture"&gt;
+        &lt;span class="status"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;Esther Akinwale&lt;/h2&gt;
+    &lt;p&gt;Frontend Developer&lt;/p&gt;
+
+    &lt;button&gt;View Profile&lt;/button&gt;
+
+&lt;/div&gt;</code></pre>
+
+    <h3>CSS Code</h3>
+
+    <pre><code>.profile-card {
+    width: 300px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 120px;
+    margin: 0 auto 15px;
+}
+
+.image-wrapper img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: green;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.profile-card button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+}</code></pre>
+
+    <h3>How positioning works in this project:</h3>
+
+    <ol>
+        <li>
+            The <code>image-wrapper</code> has
+            <code>position: relative;</code>. It becomes the reference
+            point for the status badge.
+        </li>
+        <li>
+            The <code>status</code> element has
+            <code>position: absolute;</code>. It is positioned in relation
+            to the image wrapper.
+        </li>
+        <li>
+            <code>bottom: 5px;</code> places the badge 5 pixels from the
+            bottom of the image wrapper.
+        </li>
+        <li>
+            <code>right: 5px;</code> places it 5 pixels from the right
+            edge.
+        </li>
+        <li>
+            The white border makes the green status indicator stand out
+            against the profile image.
+        </li>
+    </ol>
+
+    <div class="success">
+        <strong>Learning Outcome:</strong>
+        This project demonstrates one of the most common real-world uses
+        of CSS positioning: placing a small element precisely inside
+        another element.
+    </div>
+
+
+    <!-- COMMON MISTAKES -->
+
+    <h2>12. Common Mistakes When Using CSS Positioning</h2>
+
+    <h3>1. Using Absolute Without a Positioned Parent</h3>
+
+    <p>
+        If an element is absolutely positioned but has no positioned
+        ancestor, it may be positioned relative to the page instead of
+        the container you intended.
+    </p>
+
+    <p><strong>Solution:</strong> Give the intended parent container <code>position: relative;</code>.</p>
+
+    <h3>2. Forgetting Top, Bottom, Left or Right</h3>
+
+    <p>
+        Beginners sometimes use <code>position: fixed;</code> or
+        <code>position: sticky;</code> without specifying an inset value.
+        This can make the behavior different from what they expect.
+    </p>
+
+    <p><strong>Solution:</strong> Define the appropriate offset, such as <code>top: 0;</code>.</p>
+
+    <h3>3. Forgetting That Absolute Elements Leave Normal Flow</h3>
+
+    <p>
+        When an element is absolutely positioned, other elements behave
+        as though it is no longer occupying its original space.
+    </p>
+
+    <p><strong>Solution:</strong> Consider the layout impact before using absolute positioning.</p>
+
+    <h3>4. Using Fixed Positioning Without Making Space for Content</h3>
+
+    <p>
+        A fixed header may cover the content below it because it has
+        been removed from the normal document flow.
+    </p>
+
+    <p><strong>Solution:</strong> Add appropriate padding or margin to the content below the fixed element.</p>
+
+    <h3>5. Expecting Z-Index to Work Everywhere</h3>
+
+    <p>
+        A large z-index value cannot necessarily overcome another
+        element's stacking context.
+    </p>
+
+    <p><strong>Solution:</strong> Understand the stacking contexts created by elements and their ancestors.</p>
+
+
+    <!-- EXERCISES -->
+
+    <h2>13. Class Exercises</h2>
+
+    <p>Answer the following questions to test your understanding.</p>
+
+    <ol>
+        <li>What is CSS positioning?</li>
+        <li>What is the default position value of an HTML element?</li>
+        <li>What is the difference between relative and absolute positioning?</li>
+        <li>What happens to an element's original space when it is absolutely positioned?</li>
+        <li>Which position value is commonly used to keep a navigation bar visible while scrolling?</li>
+        <li>What is the difference between fixed and sticky positioning?</li>
+        <li>What is the purpose of the z-index property?</li>
+        <li>Why is position relative commonly used on a parent container?</li>
+    </ol>
+
+    <h2>14. Practical Assignment</h2>
+
+    <p>
+        Create a simple profile card using HTML and CSS. Your design
+        should demonstrate your understanding of CSS positioning.
+    </p>
+
+    <h3>Requirements:</h3>
+
+    <ol>
+        <li>Create a profile card with a profile image.</li>
+        <li>Add a small online status indicator at the bottom-right corner of the image.</li>
+        <li>Use relative positioning on the image container.</li>
+        <li>Use absolute positioning on the status indicator.</li>
+        <li>Add the person's name, occupation and a short description.</li>
+        <li>Style the card with padding, border-radius and box-shadow.</li>
+        <li>Make the card responsive on smaller screens.</li>
+    </ol>
+
+    <div class="success">
+        <strong>Challenge:</strong>
+        Add a small notification badge to a button or icon. Position it
+        using absolute positioning, and make sure it stays in the
+        correct place when the screen size changes.
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <h2>15. Lesson Summary</h2>
+
+    <p>
+        CSS positioning gives developers control over the placement of
+        elements on a webpage. It is especially useful when building
+        modern interfaces that require overlapping elements, fixed
+        navigation bars, badges, banners and floating buttons.
+    </p>
+
+    <p>Here is a quick summary of what we learned:</p>
+
+    <ul>
+        <li><strong>Static:</strong> The normal default positioning method.</li>
+        <li><strong>Relative:</strong> Moves an element from its original position while preserving its original space.</li>
+        <li><strong>Absolute:</strong> Positions an element relative to its nearest positioned ancestor and removes it from normal flow.</li>
+        <li><strong>Fixed:</strong> Normally positions an element relative to the viewport so it stays in place while scrolling.</li>
+        <li><strong>Sticky:</strong> Allows an element to behave normally before sticking at a specified scrolling position.</li>
+        <li><strong>Z-index:</strong> Controls stacking order within the relevant stacking contexts.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Final Teaching Tip:</strong>
+        Do not just memorize the five position values. Practise using
+        them in real webpage layouts. Understanding what happens to an
+        element's original space and identifying its positioning
+        reference point are two of the most important concepts in CSS
+        positioning.
+    </div>
+
+    <footer class="footer">
+        <p>CSS Positioning | Web Design and Development</p>
+        <p>Learn • Practise • Build</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
